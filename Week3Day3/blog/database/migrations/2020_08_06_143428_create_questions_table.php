@@ -17,10 +17,10 @@ class CreateQuestionsTable extends Migration
             $table->bigIncrements('id');
             $table->string('judul', 45);
             $table->string('isi', 255);
-            $table->date('tanggal_dibuat');
-            $table->date('tanggal_diperbaharui');
-            $table->unsignedBigInteger('profiles_id');
+            $table->unsignedBigInteger('profiles_id')->nullable();
             $table->foreign('profiles_id')->references('id')->on('profiles');
+            $table->timestamp('tanggal_dibuat')->useCurrent();
+            $table->timestamp('tanggal_diperbaharui')->useCurrent();
         });
     }
 

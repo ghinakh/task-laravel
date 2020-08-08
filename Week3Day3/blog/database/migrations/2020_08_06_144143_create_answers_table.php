@@ -16,12 +16,12 @@ class CreateAnswersTable extends Migration
         Schema::create('answers', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('isi', 255);
-            $table->date('tanggal_dibuat');
-            $table->date('tanggal_diperbaharui');
             $table->unsignedBigInteger('pertanyaan_id');
             $table->foreign('pertanyaan_id')->references('id')->on('questions');
             $table->unsignedBigInteger('profiles_id');
             $table->foreign('profiles_id')->references('id')->on('profiles');
+            $table->timestamp('tanggal_dibuat')->useCurrent();
+            $table->timestamp('tanggal_diperbaharui')->useCurrent();
         });
     }
 

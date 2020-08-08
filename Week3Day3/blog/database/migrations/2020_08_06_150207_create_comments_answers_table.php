@@ -16,7 +16,7 @@ class CreateCommentsAnswersTable extends Migration
         Schema::create('comments_answers', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('isi', 255);
-            $table->date('tanggal_dibuat');
+            $table->timestamp('tanggal_dibuat')->useCurrent();
             $table->unsignedBigInteger('jawaban_id');
             $table->foreign('jawaban_id')->references('id')->on('answers');
             $table->unsignedBigInteger('profiles_id');

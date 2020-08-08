@@ -15,7 +15,7 @@ class AddJawabanTepatIdToQuestions extends Migration
     {
         Schema::table('questions', function (Blueprint $table) {
             //
-            $table->unsignedBigInteger('jawaban_tepat_id');
+            $table->unsignedBigInteger('jawaban_tepat_id')->nullable();
             $table->foreign('jawaban_tepat_id')->references('id')->on('answers');
         });
     }
@@ -28,7 +28,6 @@ class AddJawabanTepatIdToQuestions extends Migration
     public function down()
     {
         Schema::table('questions', function (Blueprint $table) {
-            //
             $table->dropForeign(['jawaban_tepat_id']);
             $table->dropColumn(['jawaban_tepat_id']);
         });

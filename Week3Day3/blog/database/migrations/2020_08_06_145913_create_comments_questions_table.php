@@ -16,7 +16,7 @@ class CreateCommentsQuestionsTable extends Migration
         Schema::create('comments_questions', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('isi', 255);
-            $table->date('tanggal_dibuat');
+            $table->timestamp('tanggal_dibuat')->useCurrent();
             $table->unsignedBigInteger('pertanyaan_id');
             $table->foreign('pertanyaan_id')->references('id')->on('questions');
             $table->unsignedBigInteger('profiles_id');
